@@ -1,8 +1,8 @@
 package Middleware
 
-import(
-	"github.com/gofiber/fiber/v2/middleware/compress"
+import (
 	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2/middleware/compress"
 )
 
 func Compress(c *fiber.Ctx) error {
