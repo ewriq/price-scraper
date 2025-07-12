@@ -47,4 +47,3 @@ func Users(token string) (Form.User, error) {
 	}
 	return user, nil
 }
-

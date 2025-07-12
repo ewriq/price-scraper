@@ -7,12 +7,10 @@ import (
 )
 
 func Admin(app fiber.Router) {
-	app.Post("/login", Handler.Login)
-	app.Post("/register", Handler.Register)
-	app.Post("/user", Handler.User)
-	app.Post("/settings/reset/password", Handler.User)
-	app.Post("/settings/reset/email", Handler.User)
-	app.Post("/settings/reset/username", Handler.User)
-	app.Post("/verify/email", Handler.User)
-	app.Post("/device/list", Handler.User)
+	app.Get("/product/list", Handler.AllProducts)
+	app.Get("/product/:token", Handler.ProductByToken)
+
+	app.Post("/product", Handler.CreateProduct) 
+	app.Post("/seller", Handler.CreateSeller)   
+
 }

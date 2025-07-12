@@ -5,20 +5,21 @@ import (
 	"assaultrifle/Utils"
 	"fmt"
 
-	"gorm.io/driver/mysql"
+	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
 
 var DB *gorm.DB
 
 func init() {
-	dsn := Utils.GetConfig("mysql", "connect") 
+	dsn := Utils.GetConfig("pg", "dsn") 
 	var err error
-	DB, err = gorm.Open(mysql.Open(dsn), &gorm.Config{})
+	DB, err = gorm.Open(postgres.Open(dsn), &gorm.Config{})
 	if err != nil {
 		panic("Veritabanına bağlanılamadı: " + err.Error())
 	}
 
-	DB.AutoMigrate(&Form.User{})
+	DB.AutoMigrate(&Form.User{},&Form.PriceListing{},&Form.Product{},&Form.Seller{})
 	fmt.Println("✅ GORM ile MySQL bağlantısı kuruldu ve tablolar migrat edildi.")
 }
+

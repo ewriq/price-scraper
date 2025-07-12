@@ -20,6 +20,14 @@ func InvalidPerm(c *fiber.Ctx) error {
 	})
 }
 
+func NotFound(c *fiber.Ctx, text string) error {
+	return c.JSON(fiber.Map{
+		"status":  "error",
+		"message": text,
+	})
+}
+
+
 
 func CustomError(c *fiber.Ctx, text string) error {
 	return c.JSON(fiber.Map{
@@ -49,6 +57,23 @@ func CustomSuccessUser(c *fiber.Ctx, data[]Form.User, text string) error {
 		"status":  "OK",
 		"message": text,
 		"data": data,
+	})
+}
+
+func CustomSuccessProduct(c *fiber.Ctx, data[]Form.Product, text string) error {
+	return c.JSON(fiber.Map{
+		"status":  "OK",
+		"message": text,
+		"data": data,
+	})
+}
+
+
+func CustomSuccessSeller(c *fiber.Ctx, data Form.Seller, text string) error {
+	return c.Status(fiber.StatusOK).JSON(fiber.Map{
+		"status":  "OK",
+		"message": text,
+		"data":    data,
 	})
 }
 

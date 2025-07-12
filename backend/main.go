@@ -1,18 +1,19 @@
 package main
 
 import (
+	"assaultrifle/Cron"
+	
 	"assaultrifle/Handler"
 	"assaultrifle/Middleware"
 	"assaultrifle/Routes"
 
-
 	"github.com/goccy/go-json"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/helmet/v2"
-
 )
 
 func main() {
+	go Cron.StartScrapingCron()
 	app := fiber.New(fiber.Config{
 		JSONEncoder: json.Marshal,
 		JSONDecoder: json.Unmarshal,
