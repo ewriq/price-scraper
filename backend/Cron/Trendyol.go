@@ -1,13 +1,13 @@
 package Cron
 
 import (
-	"encoding/json" // JSON verisini işlemek için
+	"encoding/json" 
 	"fmt"
-	"regexp" // Düzenli ifadeler için
+	"regexp" 
 	"strings"
 )
 
-// Trendyol sayfası için gerekli olan notFoundKeywords
+
 
 type SchemaOrgProduct struct {
 	Type        string `json:"@type"`
@@ -70,7 +70,7 @@ func Trendyol(url string) (string, error) {
 
 	if len(matchEnvoyProps) > 1 {
 		jsonStr := matchEnvoyProps[1]
-		var props TrendyolResponseProps // *** Burası düzeltildi: TrendyolResponseProps kullanılıyor ***
+		var props TrendyolResponseProps 
 		err := json.Unmarshal([]byte(jsonStr), &props)
 		if err == nil {
 			price := props.Product.MerchantListing.WinnerVariant.Price.Text
@@ -89,7 +89,6 @@ func Trendyol(url string) (string, error) {
 		return strings.TrimSpace(priceMatch[1]), nil
 	}
 
-	// Eğer hiçbir yöntemle fiyat bulunamazsa
 	return "", fmt.Errorf("Trendyol: Fiyat bulunamadı.")
 }
 

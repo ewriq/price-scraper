@@ -122,7 +122,6 @@ func GetSellerWebsitesAndTokens() ([]string, []string,  []string, error) {
 	return websites, tokens, productIDs, nil
 }
 
-// GetProductByToken, belirli bir token'a sahip ürünü çeker.
 func GetProductByToken(token string) (Form.Product, error) {
 	var product Form.Product
 	result := DB.Where("token = ?", token).First(&product)
@@ -232,7 +231,6 @@ func GetProductWithAllPrices(token string) (Form.ProductWithPrices, error) {
         finalPrices = append(finalPrices, p)
     }
 
-    // Bu kısım, 'CollectedAt' artık 'time.Time' olduğu için şimdi çalışacaktır.
     sort.Slice(finalPrices, func(i, j int) bool {
         return finalPrices[i].CollectedAt.After(finalPrices[j].CollectedAt)
     })

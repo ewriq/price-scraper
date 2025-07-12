@@ -18,5 +18,5 @@ type PriceListing struct {
 	SellerID    string    `gorm:"not null" json:"seller_id"`
 	Price       string    `gorm:"not null" json:"price"`
 	Link        string    `gorm:"type:text" json:"link"`
-	CollectedAt time.Time `gorm:"not null" json:"collected_at"` // <<-- Burası time.Time OLACAK!
+	CollectedAt time.Time `gorm:"not null" json:"collected_at"` 
 }
